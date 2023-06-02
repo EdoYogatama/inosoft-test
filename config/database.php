@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'mongodb'),
 
     /*
     |--------------------------------------------------------------------------
@@ -91,6 +91,15 @@ return [
             'prefix_indexes' => true,
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
+        ],
+
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'host' => env('DB_HOST', 'containers-us-west-114.railway.app'),
+            'port' => env('DB_PORT', 7804),
+            'database' => env('DB_DATABASE', 'appTest'),
+            'username' => env('DB_USERNAME', 'mongo'),
+            'password' => env('DB_PASSWORD', 'X81B7ap2OWzPB6vCd7nQ')
         ],
 
     ],
