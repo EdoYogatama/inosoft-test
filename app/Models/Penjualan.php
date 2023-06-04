@@ -14,4 +14,8 @@ class Penjualan extends Model
         'stock',
         'terjual'
     ];
+
+    public function kendaraan() {
+        return $this->belongsTo(Kendaraan::class);
+    }
 }

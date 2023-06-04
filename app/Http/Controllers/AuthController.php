@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Traits\BasicAPIResponse;
 use Validator;
 
 class AuthController extends Controller
 {
+    use BasicAPIResponse;
     public function __construct() {
         $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
@@ -30,7 +32,7 @@ class AuthController extends Controller
         $user->password = bcrypt(request()->password);
         $user->save();
  
-        return response()->json($user, 201);
+        return $this->sendOk();
     }
 
     public function login(){
@@ -50,7 +52,7 @@ class AuthController extends Controller
     public function logout(){
         auth()->logout();
  
-        return response()->json(['message' => 'Successfully logged out']);
+        return $this->sendOk();
     }
 
     public function refresh(){
